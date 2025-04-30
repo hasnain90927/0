@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run Button Game</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+      font-family: sans-serif;
+    }
+
+    .button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 14px 28px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .message {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      font-size: 6vw;
+      color: yellow;
+      font-weight: bold;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">Something horrible is going to happen!<br>Run Run Run!!!</div>
+  <button class="button" id="moveBtn">Click Me!</button>
+
+  <script>
+    const btn = document.getElementById('moveBtn');
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function moveButton() {
+      const maxX = window.innerWidth - btn.offsetWidth;
+      const maxY = window.innerHeight - btn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      btn.style.left = ${randomX}px;
+      btn.style.top = ${randomY}px;
+    }
+
+    btn.addEventListener('click', () => {
+      document.body.style.backgroundColor = getRandomColor();
+      moveButton();
+    });
+  </script>
+
+</body>
+</html>
